@@ -758,10 +758,10 @@ client.on('message', function (message) {
         .setTitle( emoji("689538472758870111") + "Please enter a message.")
         if(!message.guild.name == "MyBot Support Server") return
         if(!message.member.roles.some(r=>["Founder | Developer","."].includes(r.name)) ) return message.channel.send(NotAllowed)
-        let ID = parseInt(args[1])
-        let MessageEntered = args.slice(2).join(" ")
-        if (!ID) return message.channel.send(NoIDEntered)
-        if (isNaN(ID)) return message.channel.send(NoIDEntered)
+        let IDEntered = parseInt(args[1])
+        let MessageEntered = args.slice(3).join(" ")
+        if (!IDEntered) return message.channel.send(NoIDEntered)
+        if (isNaN(IDEntered)) return message.channel.send(NoIDEntered)
         if (!MessageEntered) return message.channel.send(NoMessageEntered)
         var MessageEmbed = new Discord.RichEmbed()
         .setColor("0xf35353")
@@ -769,6 +769,6 @@ client.on('message', function (message) {
         .setDescription(MessageEntered)
         .setTimestamp()
         .setFooter("Sent by " + message.author.tag + ".")
-        client.users.get(ID).send(MessageEmbed)
+        client.users.get(IDEntered).send(MessageEmbed)
     }
 })
