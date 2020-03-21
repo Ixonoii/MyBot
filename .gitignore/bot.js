@@ -762,6 +762,7 @@ client.on('message', function (message) {
         let MessageEntered = args.slice(2).join(" ")
         if (!ID) return message.channel.send(NoIDEntered)
         if (isNaN(ID)) return message.channel.send(NoIDEntered)
+        if (!MessageEntered) return message.channel.send(NoMessageEntered)
         var MessageEmbed = new Discord.RichEmbed()
         .setColor("0xf35353")
         .setTitle("Message from the Mybot staff team:")
