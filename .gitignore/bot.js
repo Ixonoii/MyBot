@@ -759,7 +759,7 @@ client.on('message', function (message) {
         if(!message.guild.name == "MyBot Support Server") return
         if(!message.member.roles.some(r=>["Founder | Developer","."].includes(r.name)) ) return message.channel.send(NotAllowed)
         let IDEntered = parseInt(args[1])
-        let MessageEntered = args.slice(3).join(" ")
+        let MessageEntered = args.slice(2).join(" ")
         if (!IDEntered) return message.channel.send(NoIDEntered)
         if (isNaN(IDEntered)) return message.channel.send(NoIDEntered)
         if (!MessageEntered) return message.channel.send(NoMessageEntered)
