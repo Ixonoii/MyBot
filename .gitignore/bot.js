@@ -741,3 +741,33 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
+
+client.on('message', function (message) {
+    if (!message.guild) return
+    let args = message.content.trim().split(/ +/g)
+ 
+    if (args[0].toLowerCase() === prefix + "reply") {
+        var NotAllowed = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "You don't have the required permissions to use this command: ``Developers only are allowed to use this command.``.")
+        var NoIDEntered = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "Please enter a user ID.")
+        var NoMessageEntered = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "Please enter a message.")
+        if(!message.guild.name == "MyBot Support Server") return
+        if(!message.member.roles.some(r=>["Founder | Developer","."].includes(r.name)) ) return message.channel.send(NotAllowed)
+        let ID = parseInt(args[1])
+        let MessageEntered = args.slice(2).join(" ")
+        if (!ID) return message.channel.send(NoIDEntered)
+        if (isNaN(ID)) return message.channel.send(NoIDEntered)
+        var MessageEmbed = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle("Message from the Mybot staff team:")
+        .setDescription(MessageEntered)
+        .setTimestamp()
+        .setFooter("Sent by " + message.author.tag + ".")
+        client.users.get(ID).send(MessageEmbed)
+    }
+})
