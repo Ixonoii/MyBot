@@ -20,7 +20,7 @@ client.on('message', message => {
     var CommandsEmbed = new Discord.RichEmbed()
     .setColor("0x38ee0e")
     .addField("Basic commands", "**-help** Displays a few information that can help you.\n **-cmds** Displays a list of all commands.\n **-suggest** Send a suggestion to our developers.\n **-bug** Send a bug report to our developers.\n **-support** Sends a link to join our support server.\n **-invite** Sends a link to add MyBot on your server.")
-    .addField("Fun Commands", "**-kiss** Kissed a user.\n **-slap** Slaps someone.\n **-fight** Start a fight with a user.\n **-hug** Hugs someone.\n **-think** Think about someone.\n **-8ball** Ask a question, get an answer.")
+    .addField("Fun Commands", "**-kiss** Kissed a user.\n **-slap** Slaps someone.\n **-fight** Start a fight with a user.\n **-hug** Hugs someone.\n **-think** Think about someone.\n **-8ball** Ask a question, get an answer.\n **-avatar** Displays your Discord avatar.")
     .addField("Moderation commands", "**-ban** Ban a user.\n **-kick** Kick a user.\n **-purge** Delete a number of messages.\n **-setnick** Set the nickname of a user.\n **-softban** Softban a user (ban and immediate unban to delete user messages).\n **-mute** Mute a user.\n **-unmute** Unmute a user.")
     .addField("Managment Command", "**-setservername** Change the server name.\n **-setservericon** Change the server icon.\n **-setname** Change the name of a channel. \n **-settopic** Change the topic of a channel.")
     .setTimestamp()
@@ -67,6 +67,16 @@ client.on('message', message => {
     if(message.content === prefix + "help"){
         message.channel.send(Success)
         message.author.send(HelpEmbed)
+    }
+})
+
+client.on('message', message => {
+    var AvatarEmbed = new Discord.RichEmbed()
+    .setColor("0x38ee0e")
+    .setTitle("Here is your avatar:")
+    .setImage(message.author.displayAvatarURL)
+    if(message.content === prefix + "avatar"){
+        message.channel.send(AvatarEmbed)
     }
 })
 
@@ -331,7 +341,7 @@ client.on('message', function (message) {
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
         client.channels.get("689514976750338067").send(SupportServerBan)
-        member.Kick()
+        member.ban({days: 7})
         message.delete()
         var KickSuccess = new Discord.RichEmbed()
         .setColor("0x38ee0e")
@@ -366,7 +376,7 @@ client.on('message', function (message) {
         if (isNaN(count)) return message.channel.send(IncorrectNumberEntered)
         if (count < 1 || count > 100) return message.channel.send(TooHigh)
         var SupportServerBan = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
+        .setColor("0xf35353")
         .setTitle("Purge")
         .setThumbnail(message.guild.iconURL)
         .addField("Server:", message.guild.name + " (``" + message.guild.id + "``)")
@@ -405,7 +415,7 @@ client.on("message", function (message) {
         if (member.highestRole.calculatedPosition >= message.member.highestRole.calculatedPosition && message.author.id !== message.guild.ownerID) return message.channel.send(CantSetnick)
         if (!member.manageable) return message.channel.send(CantSetnick)
         var SupportServerBan = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
+        .setColor("0xf35353")
         .setTitle("Rename")
         .setThumbnail(message.guild.iconURL)
         .addField("User renammed:", member + " (``" + member.id + "``)")
@@ -509,7 +519,7 @@ client.on('message', function (message) {
         .setTitle( emoji("689538521161138177") + member.displayName + " has been unmuted.")
         .setTimestamp()
         var SupportServerBan = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
+        .setColor("0xf35353")
         .setTitle("Unmute")
         .setThumbnail(message.guild.iconURL)
         .addField("User unmuted:", member + " (``" + member.id + "``)")
@@ -601,7 +611,7 @@ client.on("message", message => {
         .setTitle( emoji("689538521161138177") + "Name set to: ``" + SuggestionTyped + "``")
         .setTimestamp()
         var SupportServerBan = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
+        .setColor("0xf35353")
         .setTitle("Channel Rename")
         .setThumbnail(message.guild.iconURL)
         .addField("Server:", message.guild.name + " (``" + message.guild.id + "``)")
@@ -610,7 +620,7 @@ client.on("message", message => {
         .addField("New name:", SuggestionTyped)
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
-        client.channels.get("689514976750338067").send(SupportServerBan)
+        client.channels.get("689897913148899337").send(SupportServerBan)
         message.channel.send(Success)
         message.channel.setName(SuggestionTyped)
     }
@@ -637,7 +647,7 @@ client.on("message", message => {
         .setTitle( emoji("689538521161138177") + "Name set to: ``" + SuggestionTyped + "``")
         .setTimestamp()
         var SupportServerBan = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
+        .setColor("0xf35353")
         .setTitle("Topic Change")
         .setThumbnail(message.guild.iconURL)
         .addField("Server:", message.guild.name + " (``" + message.guild.id + "``)")
@@ -646,7 +656,7 @@ client.on("message", message => {
         .addField("New topic:", SuggestionTyped)
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
-        client.channels.get("689514976750338067").send(SupportServerBan)
+        client.channels.get("689897913148899337").send(SupportServerBan)
         message.channel.send(Success)
         message.channel.setTopic(SuggestionTyped)
     }
@@ -673,7 +683,7 @@ client.on("message", message => {
         .setTitle( emoji("689538521161138177") + "Server name set to: ``" + SuggestionTyped + "``")
         .setTimestamp()
         var SupportServerBan = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
+        .setColor("0xf35353")
         .setTitle("Server Rename")
         .setThumbnail(message.guild.iconURL)
         .addField("Server:", message.guild.name + " (``" + message.guild.id + "``)")
@@ -681,7 +691,7 @@ client.on("message", message => {
         .addField("New name:", SuggestionTyped)
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
-        client.channels.get("689514976750338067").send(SupportServerBan)
+        client.channels.get("689897913148899337").send(SupportServerBan)
         message.channel.send(Success)
         message.guild.setName(SuggestionTyped)
     }
@@ -708,7 +718,7 @@ client.on("message", message => {
         .setTitle( emoji("689538521161138177") + "Server icon set to: ``" + SuggestionTyped + "``")
         .setTimestamp()
         var SupportServerBan = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
+        .setColor("0xf35353")
         .setTitle("Server Icon Change")
         .setThumbnail(message.guild.iconURL)
         .addField("Server:", message.guild.name + " (``" + message.guild.id + "``)")
@@ -717,7 +727,7 @@ client.on("message", message => {
         .setThumbnail(message.guild.iconURL)
         .setImage(SuggestionTyped)
         .setTimestamp()
-        client.channels.get("689514976750338067").send(SupportServerBan)
+        client.channels.get("689897913148899337").send(SupportServerBan)
         message.channel.send(Success)
         message.guild.setIcon(SuggestionTyped)
     }
@@ -739,36 +749,5 @@ client.on('message', function (message) {
         .setTitle( emoji("689538521161138177") + answers[Math.floor(Math.random() * answers.length)])
         .setTimestamp()
         message.channel.send(Success)
-    }
-})
-
-client.on('message', function (message) {
-    if (!message.guild) return
-    let args = message.content.trim().split(/ +/g)
- 
-    if (args[0].toLowerCase() === prefix + "reply") {
-        var NotAllowed = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle( emoji("689538472758870111") + "You don't have the required permissions to use this command: ``Developers only are allowed to use this command.``.")
-        var NoIDEntered = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle( emoji("689538472758870111") + "Please enter a user ID.")
-        var NoMessageEntered = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle( emoji("689538472758870111") + "Please enter a message.")
-        if(!message.guild.name == "MyBot Support Server") return
-        if(!message.member.roles.some(r=>["Founder | Developer","."].includes(r.name)) ) return message.channel.send(NotAllowed)
-        let IDEntered = parseInt(args[1])
-        let MessageEntered = args.slice(3).join(" ")
-        if (!IDEntered) return message.channel.send(NoIDEntered)
-        if (isNaN(IDEntered)) return message.channel.send(NoIDEntered)
-        if (!MessageEntered) return message.channel.send(NoMessageEntered)
-        var MessageEmbed = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle("Message from the Mybot staff team:")
-        .setDescription(MessageEntered)
-        .setTimestamp()
-        .setFooter("Sent by " + message.author.tag + ".")
-        client.users.get(IDEntered).send(MessageEntered)
     }
 })
