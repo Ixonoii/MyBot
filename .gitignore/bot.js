@@ -751,3 +751,26 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
+
+//////////////////////////////////// D E V   C O M MA N D S ////////////////////////////////////
+////////////////////////////////////                        ////////////////////////////////////
+//////////////////////////////////// D E V   C O M MA N D S ////////////////////////////////////
+
+client.on('message', message =>{
+    if (!message.guild) return
+    if (!message.guild.id === "689503638020030673") return
+    let args = message.content.trim().split(/ +/g)
+
+    if (args[0].toLowerCase() === prefix + "setstatus") {
+        var NoStatusEntered = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "You must enter a new status.")
+        if (!args[1]) return message.channel.send(NoStatusEntered)
+        let MessageEntered = args.slice(1).join(" ")
+        var Success = new Discord.RichEmbed()
+        .setColor("0x38ee0e")
+        .setTitle( emoji("689538521161138177") + "Status set to: ``" + MessageEntered + "``.")
+        client.user.setActivity(MessageEntered, {type: "PLAYING"})
+        message.channel.send(Success)
+    }
+})
