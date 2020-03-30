@@ -134,7 +134,7 @@ client.on("message", function (message) {
         .setColor("0xf35353")
         .addField("**Username:**", member.displayName)
         .addField("**ID:**", member.id)
-        .addField("**Joined at:**", `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, true)
+        .addField("**Joined at:**", member.joinedAt)
         .addField("**Status:**", member.presence.status, true)
         .addField("**Roles:**", member.roles.map(r => `${r}`).join(' | '), true)
         .setTimestamp()
