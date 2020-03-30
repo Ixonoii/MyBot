@@ -796,11 +796,3 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
-
-client.on('message', message =>{
-    if(message.content === "!check"){
-        let user = message.author
-        if(client.guilds.get("689503638020030673").user.roles.some(r=>["Moderator"].includes(r.name))) return message.channel.send("You're not a moderator!")
-        message.channel.send("You are a moderator!")
-    }
-})
