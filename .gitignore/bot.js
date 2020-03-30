@@ -112,7 +112,7 @@ client.on("message", function (message) {
         if(!member) return message.channel.send(NoMention)
         var Success = new Discord.RichEmbed()
         .setColor("0xf35353")
-        .setDescription(member.roles.map(r => `${r}`).join(' | '), true)
+        .setDescription(member.roles.map(r => `${r}`).join(' \n '), true)
         .setTimestamp()
         message.channel.send(Success)
     }
