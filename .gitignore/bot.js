@@ -38,7 +38,7 @@ client.on("guildCreate", guild =>{
     .setTitle("MyBot has been added on a server.")
     .setDescription(`I am now on ${client.guilds.size} servers !`)
     .setThumbnail(guild.iconURL)
-    .addField("Information about the server:", "Name: **" + guild.name + "** (``" + guild.id + "``) \n Members: **" + guild.memberCount + "** \n Owner: **" + guild.owner + "** (``" + guild.ownerID + "``)")
+    .addField("Information about the server:", "Name: **" + guild.name + "** (``" + guild.id + "``) \n Members: **" + guild.memberCount + "** \n Owner: **" + guild.owner.displayName + "** (``" + guild.ownerID + "``)")
     .setTimestamp()
     client.channels.get("689513780870381568").send(BotAddedEmbed)
 })
@@ -49,7 +49,7 @@ client.on("guildDelete", guild =>{
     .setTitle("MyBot has been removed from a server.")
     .setDescription(`I am now on ${client.guilds.size} servers !`)
     .setThumbnail(guild.iconURL)
-    .addField("Information about the server:", "Name: **" + guild.name + "** (``" + guild.id + "``) \n Members: **" + guild.memberCount + "** \n Owner: **" + guild.owner + "** (``" + guild.ownerID + "``)")
+    .addField("Information about the server:", "Name: **" + guild.name + "** (``" + guild.id + "``) \n Members: **" + guild.memberCount + "** \n Owner: **" + guild.owner.displayName + "** (``" + guild.ownerID + "``)")
     .setTimestamp()
     client.channels.get("689513780870381568").send(BotAddedEmbed)
 })
@@ -83,7 +83,8 @@ client.on('message', message => {
 client.on('message', message => {
     var Success = new Discord.RichEmbed()
     .setColor("0x38ee0e")
-    .setTitle( emoji("689538521161138177") + "Hey " + message.author.username + "! Want to add MyBot on your server? You can do it by [cliking here!](https://discordapp.com/oauth2/authorize?client_id=689515456771391488&scope=bot&permissions=8)")
+    .setTitle( emoji("689538521161138177") + "Hey " + message.author.username + "! Want to add MyBot on your server? You can do it by cliking here!")
+    .setURL("https://discordapp.com/oauth2/authorize?client_id=689515456771391488&scope=bot&permissions=8")
     if(message.content === prefix + "invite"){
         message.channel.send(Success)
     }
