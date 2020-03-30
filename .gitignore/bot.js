@@ -131,7 +131,6 @@ client.on("message", function (message) {
         let member = message.mentions.members.first()
         if(!member) return message.channel.send(NoMention)
         var Success = new Discord.RichEmbed()
-        .setAuthor(member.username + '#' + member.discriminator, member.displayAvatarURL)
         .setColor("0xf35353")
         .setThumbnail(`${member.displayAvatarURL}`)
         .addField("**Username:**", member.displayName)
