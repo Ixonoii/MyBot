@@ -132,7 +132,6 @@ client.on("message", function (message) {
         if(!member) return message.channel.send(NoMention)
         var Success = new Discord.RichEmbed()
         .setColor("0xf35353")
-        .setThumbnail(`${member.displayAvatarURL}`)
         .addField("**Username:**", member.displayName)
         .addField("**ID:**", member.id)
         .addField("**Joined at:**", `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, true)
