@@ -94,7 +94,6 @@ client.on('message', message => {
     var Success = new Discord.RichEmbed()
     .setColor("0x38ee0e")
     .setTitle( emoji("689538521161138177") + "Hey " + message.author.username + "! Want to join our support server? You can do it by cliking here!")
-    .setURL("discord.gg/qsV4x8r")
     if(message.content === prefix + "support"){
         message.channel.send(Success)
     }
