@@ -19,7 +19,7 @@ client.on('ready', function(){
 client.on('message', message => {
     var CommandsEmbed = new Discord.RichEmbed()
     .setColor("0x38ee0e")
-    .addField("Basic commands", "**-help** Displays a few information that can help you.\n **-cmds** Displays a list of all commands.\n **-suggest** Send a suggestion to our developers.\n **-bug** Send a bug report to our developers.\n **-support** Sends a link to join our support server.\n **-invite** Sends a link to add MyBot on your server.\n **-roles** Displays the roles of a user.")
+    .addField("Basic commands", "**-help** Displays a few information that can help you.\n **-cmds** Displays a list of all commands.\n **-suggest** Send a suggestion to our developers.\n **-bug** Send a bug report to our developers.\n **-support** Sends a link to join our support server.\n **-invite** Sends a link to add MyBot on your server.\n **-roles** Displays the roles of a user.\n **-whois** Displays information about a user.")
     .addField("Fun Commands", "**-kiss** Kissed a user.\n **-slap** Slaps someone.\n **-fight** Start a fight with a user.\n **-hug** Hugs someone.\n **-think** Think about someone.\n **-8ball** Ask a question, get an answer.\n **-avatar** Displays your Discord avatar.")
     .addField("Moderation commands", "**-ban** Ban a user.\n **-kick** Kick a user.\n **-purge** Delete a number of messages.\n **-setnick** Set the nickname of a user.\n **-softban** Softban a user (ban and immediate unban to delete user messages).\n **-mute** Mute a user.\n **-unmute** Unmute a user.")
     .addField("Managment Command", "**-setservername** Change the server name.\n **-setservericon** Change the server icon.\n **-setname** Change the name of a channel. \n **-settopic** Change the topic of a channel.")
@@ -114,6 +114,31 @@ client.on("message", function (message) {
         .setColor("0xf35353")
         .setTitle("Here are all the roles that " + member.displayName + " has:")
         .setDescription(member.roles.map(r => `${r}`).join(' \n '), true)
+        .setTimestamp()
+        message.channel.send(Success)
+    }
+})
+
+client.on("message", function (message) {
+    if (!message.guild) return
+    let args = message.content.trim().split(/ +/g)
+ 
+    if (args[0].toLowerCase() === prefix + "whois") {
+        var NoMention = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "You must mention someone.")
+        .setTimestamp()
+        let member = message.mentions.members.first()
+        if(!member) return message.channel.send(NoMention)
+        var Success = new Discord.RichEmbed()
+        .setAuthor(member.username + '#' + member.discriminator, member.displayAvatarURL)
+        .setColor("0xf35353")
+        .setThumbnail(`${member.displayAvatarURL}`)
+        .addField("**Username:**", member.displayName)
+        .addField("**ID:**", member.id)
+        .addField("**Joined at:**", `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, true)
+        .addField("**Status:**", member.presence.status, true)
+        .addField("**Roles:**", member.roles.map(r => `${r}`).join(' | '), true)
         .setTimestamp()
         message.channel.send(Success)
     }
