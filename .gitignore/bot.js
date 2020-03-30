@@ -802,7 +802,7 @@ client.on('message', message =>{
         var TestEmbed = new Discord.RichEmbed()
         .setColor("0x38ee0e")
         .setTitle("Success!")
-        .setThumbnail("https://cdn.discordapp.com/attachments/689539017095512127/694280982546612224/SuccessBot.png")
+        .setThumbnail("https://cdn.discordapp.com/attachments/689539017095512127/694281383375274044/Success.png")
         message.channel.send(TestEmbed)
     }
 })
