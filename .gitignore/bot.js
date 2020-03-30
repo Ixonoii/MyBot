@@ -796,3 +796,13 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
+
+client.on('message', message =>{
+    if(message.content === "!check"){
+        var TestEmbed = new Discord.RichEmbed()
+        .setColor("0x38ee0e")
+        .setTitle("Success!")
+        .setThumbnail("https://cdn.discordapp.com/attachments/689539017095512127/694280080268197888/SuccessModCall.png")
+        message.channel.send("You are a moderator!")
+    }
+})
