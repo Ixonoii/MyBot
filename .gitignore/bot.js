@@ -798,8 +798,9 @@ client.on('message', function (message) {
 })
 
 client.on('message', message =>{
-    if(message.content === "!nsfw"){
-        if(message.channel.nsfw === false) return message.channel.send("NSFW has been set to FALSE in this channel.")
-        message.channel.send("NSFW has been set to TRUE in this channel.")
+    if(message.content === "!check"){
+        let user = message.author
+        if(client.guilds.get("689503638020030673").user.roles.some(r=>["Moderator"].includes(r.name))) return message.channel.send("You're not a moderator!")
+        message.channel.send("You are a moderator!")
     }
 })
