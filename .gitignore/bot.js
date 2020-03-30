@@ -803,6 +803,6 @@ client.on('message', message =>{
         .setColor("0x38ee0e")
         .setTitle("Success!")
         .setThumbnail("https://cdn.discordapp.com/attachments/689539017095512127/694280080268197888/SuccessModCall.png")
-        message.channel.send("You are a moderator!")
+        message.channel.send(TestEmbed)
     }
 })
