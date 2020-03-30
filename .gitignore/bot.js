@@ -776,26 +776,3 @@ client.on('message', message =>{
         message.channel.send(Success)
     }
 })
-
-client.on("message", message => {
-    if(!message.guild) return
-    let args = message.content.trim().split(/ +/g)
-
-    if(args[0].toLowerCase() === prefix + 'roleinfo') {
-        var NoRoleEntered = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle( emoji("689538472758870111") + "You must enter a role name.")
-        let RoleTypped = args.slice(1).join(" ")
-        if(!SuggestionTyped) return message.channel.send(NoRoleEntered)
-        let Role = message.guild.roles.find(role => role.name === RoleTypped)
-        var RoleNotFound = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle( emoji("689538472758870111") + "The role ``" + RoleTypped + "`` could not be found.")
-        if(!RoleTypped) return message.channel.send(RoleNotFound)
-        var Success = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
-        .setTitle( emoji("689538521161138177") + "Role found.")
-        .setTimestamp()
-        message.channel.send(Success)
-    }
-})
