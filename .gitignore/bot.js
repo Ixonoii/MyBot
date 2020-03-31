@@ -796,31 +796,3 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
-
-client.on("message", message => {
-    if(!message.guild) return
-    let args = message.content.trim().split(/ +/g)
-
-    if(args[0].toLowerCase() === prefix + 'remove') {
-        var NoSuggestionEntered = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle( emoji("689538472758870111") + "You must enter a ID.")
-        if (!message.member.hasPermission("ADMINISTRATOR")) return
-        if(!message.guild.name === "MyBot Support Server") return
-        if(!message.member.roles.some(r=>["Founder | Developer"].includes(r.name)) ) return
-        if(!message.member.roles.some(r=>["."].includes(r.name)) ) return
-        let IDTyped = args.slice(1).join(" ")
-        if(!IDTyped) return message.channel.send(NoSuggestionEntered)
-        var Success = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
-        .setTitle( emoji("689538521161138177") + "Bot removed.")
-        .setTimestamp()
-        var Notif = new Discord.RichEmbed()
-        .setColor("0xf35353")
-        .setTitle( emoji("689538521161138177") + "Hello " + client.guilds.get(IDTyped).owner + ". The staff team decided to remove MyBot from your Discord server. This may be due to non-compliance with Discord ToS, or the rules of use of MyBot. If you think this is an error, please contact a staff member by joining our Discord server.")
-        .setTimestamp()
-        client.guilds.get(IDTyped).owner.send(Notif)
-        message.channel.send(Success)
-        client.guilds.get(IDTyped).leave()
-    }
-})
