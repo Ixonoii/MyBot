@@ -665,7 +665,7 @@ client.on("message", message => {
         .addField("New name:", SuggestionTyped)
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
-        client.channels.get("689897913148899337").send(SupportServerBan)
+        client.channels.get("689514976750338067").send(SupportServerBan)
         message.channel.send(Success)
         message.channel.setName(SuggestionTyped)
     }
@@ -701,7 +701,7 @@ client.on("message", message => {
         .addField("New topic:", SuggestionTyped)
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
-        client.channels.get("689897913148899337").send(SupportServerBan)
+        client.channels.get("689514976750338067").send(SupportServerBan)
         message.channel.send(Success)
         message.channel.setTopic(SuggestionTyped)
     }
@@ -736,7 +736,7 @@ client.on("message", message => {
         .addField("New name:", SuggestionTyped)
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
-        client.channels.get("689897913148899337").send(SupportServerBan)
+        client.channels.get("689514976750338067").send(SupportServerBan)
         message.channel.send(Success)
         message.guild.setName(SuggestionTyped)
     }
@@ -772,7 +772,7 @@ client.on("message", message => {
         .setThumbnail(message.guild.iconURL)
         .setImage(SuggestionTyped)
         .setTimestamp()
-        client.channels.get("689897913148899337").send(SupportServerBan)
+        client.channels.get("689514976750338067").send(SupportServerBan)
         message.channel.send(Success)
         message.guild.setIcon(SuggestionTyped)
     }
@@ -794,15 +794,5 @@ client.on('message', function (message) {
         .setTitle( emoji("689538521161138177") + answers[Math.floor(Math.random() * answers.length)])
         .setTimestamp()
         message.channel.send(Success)
-    }
-})
-
-client.on('message', message =>{
-    if(message.content === "!check"){
-        var TestEmbed = new Discord.RichEmbed()
-        .setColor("0x38ee0e")
-        .setTitle("Success!")
-        .setThumbnail("https://cdn.discordapp.com/attachments/689539017095512127/694281383375274044/Success.png")
-        message.channel.send(TestEmbed)
     }
 })
