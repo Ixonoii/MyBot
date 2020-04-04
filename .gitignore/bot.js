@@ -386,7 +386,7 @@ client.on('message', function (message) {
         .setThumbnail(message.guild.iconURL)
         .setTimestamp()
         client.channels.get("689514976750338067").send(SupportServerBan)
-        member.ban({days: 7})
+        member.kick()
         message.delete()
         var KickSuccess = new Discord.RichEmbed()
         .setColor("0x38ee0e")
