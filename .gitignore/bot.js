@@ -11,7 +11,7 @@ function emoji (id) {
 }
 
 client.on('ready', function(){
-    client.user.setActivity("Need help? Use -help!", {type: "PLAYING"})
+    client.user.setActivity("🏡 Stay safe, stay home! | -help", {type: "PLAYING"})
 })
 
 // CMDS COMMAND
