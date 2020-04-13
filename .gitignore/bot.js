@@ -93,17 +93,7 @@ client.on('message', message => {
 client.on('message', message => {
     var Success = new Discord.RichEmbed()
     .setColor("0x38ee0e")
-    .setTitle( emoji("689538521161138177") + "Hey " + message.author.username + "! Want to join our support server? You can do it by clicking here!")
-    .setURL("discord.gg/qsV4x8r")
-    if(message.content === prefix + "support"){
-        message.channel.send(Success)
-    }
-})
-
-client.on('message', message => {
-    var Success = new Discord.RichEmbed()
-    .setColor("0x38ee0e")
-    .setTitle("If the link above isn't working, copy and paste this one: **discord.gg/qsV4x8r**")
+    .setTitle("Hey " + message.author.username + "! Want to join our support server? You can do it by copying and pasting this link: **discord.gg/qsV4x8r**")
     if(message.content === prefix + "support"){
         message.channel.send(Success)
     }
