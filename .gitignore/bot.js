@@ -796,7 +796,7 @@ client.on('message', function (message) {
     }
 })
 
-client.on("message", message =>{
+client.on("message", message => {
     let invites = ["ignore me"], ct = 0;
     client.guilds.forEach(g => {
         g.fetchInvites().then(guildInvites =>{
@@ -812,17 +812,16 @@ client.on("message", message =>{
                     invites.forEach((invite, i) => invites[i] = "- " + invite);
                     invites = invites.join("\n\n");
 
-                    let embed = new Discord.RichEmbed()
+                    let InvitesEmbed = new Discord.RichEmbed()
                     .setTitle("All Invites:")
                     .setDescription(invites);
-
-                    message.channel.send(embed);
-
-                    if(message.content === prefix + "--invites") {
-                        message.channel.send(embed)
-                    }
+                }).catch(err => {
+                    ct++;
                 })
             }
         })
     })
+    if(message.content === "-invites") {
+        message.channel.send(InvitesEmbed)
+    }
 })
