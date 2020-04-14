@@ -796,32 +796,16 @@ client.on('message', function (message) {
     }
 })
 
-client.on("message", message => {
-    let invites = ["ignore me"], ct = 0;
+const invites = {};
+
+client.on('message', message => {
+    wait(1000);
     client.guilds.forEach(g => {
-        g.fetchInvites().then(guildInvites =>{
-            invites[invites.length + 1] = (g + " - `Invites: " + guildInvites.array().join(", ") + "`");
-            ct++;
-
-            if(ct >= client.guilds.size) {
-                invites.forEach((invite, i) => {
-                    if(invite == undefined)
-                    invites.splice(i, 1);
-
-                    invites.shift();
-                    invites.forEach((invite, i) => invites[i] = "- " + invite);
-                    invites = invites.join("\n\n");
-
-                    let InvitesEmbed = new Discord.RichEmbed()
-                    .setTitle("All Invites:")
-                    .setDescription(invites);
-                }).catch(err => {
-                    ct++;
-                })
-            }
-        })
+        g.fetchInvites().then(guildInvites => {
+            invites[g.id] = guildInvites; 
+        }) 
     })
-    if(message.content === "-invites") {
-        message.channel.send(InvitesEmbed)
+    if(message.content === "testinginvites") {
+        message.channel.send(invites)
     }
 })
