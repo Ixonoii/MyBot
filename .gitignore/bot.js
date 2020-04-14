@@ -795,3 +795,15 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
+
+client.on('message', function (message) {
+    const guild = bot.guilds.get("689503638020030673");
+    const role = guild.roles.get("689504680698839131");
+    if (!message.guild) return
+    let args = message.content.trim().split(/ +/g)
+ 
+    if (args[0].toLowerCase() === prefix + 'noob') {
+        if(!message.member.roles.has(role)) return message.channel.send("MyBot is experiencing issues fetching the roles: ``message.member.roles.has(role) = false``")
+        message.channel.send("Success!")
+    }
+})
