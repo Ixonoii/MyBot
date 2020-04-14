@@ -795,17 +795,3 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
-
-const invites = {};
-
-client.on('message', message => {
-    wait(1000);
-    client.guilds.forEach(g => {
-        g.fetchInvites().then(guildInvites => {
-            invites[g.id] = guildInvites; 
-        }) 
-    })
-    if(message.content === "testinginvites") {
-        message.channel.send(invites)
-    }
-})
