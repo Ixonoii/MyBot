@@ -19,10 +19,10 @@ client.on('ready', function(){
 client.on('message', message => {
     var CommandsEmbed = new Discord.RichEmbed()
     .setColor("0x38ee0e")
-    .addField("😀 Basic commands", "**-help** Displays a few information that can help you.\n **-cmds** Displays a list of all commands.\n **-suggest** Send a suggestion to our developers.\n **-bug** Send a bug report to our developers.\n **-support** Sends a link to join our support server.\n **-invite** Sends a link to add MyBot on your server.\n **-roles** Displays the roles of a user.\n **-whois** Displays information about a user.")
-    .addField("😋 Fun Commands", "**-kiss** Kissed a user.\n **-slap** Slaps someone.\n **-fight** Start a fight with a user.\n **-hug** Hugs someone.\n **-think** Think about someone.\n **-8ball** Ask a question, get an answer.\n **-avatar** Displays your Discord avatar.")
-    .addField("👮‍♂️ Moderation commands", "**-ban** Ban a user.\n **-kick** Kick a user.\n **-purge** Delete a number of messages.\n **-setnick** Set the nickname of a user.\n **-softban** Softban a user (ban and immediate unban to delete user messages).\n **-mute** Mute a user.\n **-unmute** Unmute a user.")
-    .addField("👷‍♂️ Managment Command", "**-setservername** Change the server name.\n **-setservericon** Change the server icon.\n **-setname** Change the name of a channel. \n **-settopic** Change the topic of a channel.")
+    .addField("😀 **__Basic commands__**", "**-help** Displays a few information that can help you.\n **-cmds** Displays a list of all commands.\n **-suggest** Send a suggestion to our developers.\n **-bug** Send a bug report to our developers.\n **-support** Sends a link to join our support server.\n **-invite** Sends a link to add MyBot on your server.\n **-roles** Displays the roles of a user.\n **-whois** Displays information about a user.")
+    .addField("😋 **__Fun Commands__**", "**-kiss** Kissed a user.\n **-slap** Slaps someone.\n **-fight** Start a fight with a user.\n **-hug** Hugs someone.\n **-think** Think about someone.\n **-8ball** Ask a question, get an answer.\n **-avatar** Displays your Discord avatar.")
+    .addField("👮‍♂️ **__Moderation commands__**", "**-ban** Ban a user.\n **-kick** Kick a user.\n **-purge** Delete a number of messages.\n **-setnick** Set the nickname of a user.\n **-softban** Softban a user (ban and immediate unban to delete user messages).\n **-mute** Mute a user.\n **-unmute** Unmute a user.")
+    .addField("👷‍♂️ **__Managment Commands__**", "**-setservername** Change the server name.\n **-setservericon** Change the server icon.\n **-setname** Change the name of a channel. \n **-settopic** Change the topic of a channel.")
     .setTimestamp()
     .setFooter("More coming soon.")
     if(message.content === "-cmds") {
