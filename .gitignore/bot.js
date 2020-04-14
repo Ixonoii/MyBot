@@ -11,7 +11,7 @@ function emoji (id) {
 }
 
 client.on('ready', function(){
-    client.user.setActivity("🏡 Stay safe, stay home! 😷 | -help", {type: "PLAYING"})
+    client.user.setActivity("🏡 Stay safe, stay home! 🏡 | -help", {type: "PLAYING"})
 })
 
 // CMDS COMMAND
@@ -793,5 +793,17 @@ client.on('message', function (message) {
         .setTitle( emoji("689538521161138177") + answers[Math.floor(Math.random() * answers.length)])
         .setTimestamp()
         message.channel.send(Success)
+    }
+})
+
+client.on("message", function (message) {
+    const guild = bot.guilds.get("689503638020030673"); // Guild ID
+    const role = guild.roles.get("689504680698839131"); // Role ID
+    if (!message.guild) return
+    if(!message.member.roles.has(role.id)) return message.channel.send("false");
+    let args = message.content.trim().split(/ +/g)
+ 
+    if (args[0].toLowerCase() === prefix + "admin") {
+        message.channel.send("true")
     }
 })
