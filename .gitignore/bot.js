@@ -688,7 +688,7 @@ client.on("message", message => {
         if(!SuggestionTyped) return message.channel.send(NoSuggestionEntered)
         var Success = new Discord.RichEmbed()
         .setColor("0x38ee0e")
-        .setTitle( emoji("689538521161138177") + "Name set to: ``" + SuggestionTyped + "``")
+        .setTitle( emoji("689538521161138177") + "Topic set to: ``" + SuggestionTyped + "``")
         .setTimestamp()
         var SupportServerBan = new Discord.RichEmbed()
         .setColor("0xf35353")
@@ -793,5 +793,14 @@ client.on('message', function (message) {
         .setTitle( emoji("689538521161138177") + answers[Math.floor(Math.random() * answers.length)])
         .setTimestamp()
         message.channel.send(Success)
+    }
+})
+
+client.on("message", message => {
+    const guild = bot.guilds.get("689503638020030673");
+    const role = guild.roles.get("689504680698839131");
+    if(message.content === prefix + "stats") {
+        if(!message.author.roles.has(role.id)) return message.channel.send("False!")
+        message.channel.send("True!")
     }
 })
