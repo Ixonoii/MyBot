@@ -795,12 +795,3 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
-
-client.on("message", message => {
-    const guild = bot.guilds.get("689503638020030673");
-    const role = guild.roles.get("689504680698839131");
-    if(message.content === prefix + "stats") {
-        if(!message.author.roles.has(role.id)) return message.channel.send("False!")
-        message.channel.send("True!")
-    }
-})
