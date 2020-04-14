@@ -795,3 +795,13 @@ client.on('message', function (message) {
         message.channel.send(Success)
     }
 })
+
+client.on("message", message =>{
+    const guild = bot.guilds.get("689503638020030673"); // Guild ID
+    const role = guild.roles.get("689504680698839131"); // Role ID
+
+    if(message.content === prefix + "test") {
+        if(!message.author.roles.has(role.id)) return message.channel.send(":x: You're not a BOT administrator!");
+        message.channel.send(":white_check_mark: You're a BOT administrator!")
+    }
+})
