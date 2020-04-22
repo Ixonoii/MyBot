@@ -11,7 +11,7 @@ function emoji (id) {
 }
 
 client.on('ready', function(){
-    client.user.setActivity("⚠ MyBot is experiencing issues, sorry for the inconvenience.", {type: "PLAYING"})
+    client.user.setActivity("🎉^MyBot is back online, sorry for the inconvenience.", {type: "PLAYING"})
 })
 
 // CMDS COMMAND
