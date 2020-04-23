@@ -14,6 +14,46 @@ client.on('ready', function(){
     client.user.setActivity("🎉 MyBot is back online, sorry for the inconvenience. 😀", {type: "PLAYING"})
 })
 
+client.on('message', function (message) {
+    if (!message.guild) return
+    let args = message.content.trim().split(/ +/g)
+ 
+    if (args[0].toLowerCase() === prefix + 'report') {
+        var NoMemberMentionned = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "You must mention someone.")
+        var NoReasonEntered = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "You must enter a reason.")
+        var NoChannelFound = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle( emoji("689538472758870111") + "An error occurred: No channel named ``#reports`` were found on this server!")
+        let member = message.mentions.members.first()
+        let reason = args.slice(2).join(" ")
+        if (!member) return message.channel.send(NoMemberMentionned)
+        if (!reason) return message.channel.send(NoReasonEntered)
+        var ReportInformation = new Discord.RichEmbed()
+        .setColor("0xf35353")
+        .setTitle("Report")
+        .setThumbnail(message.guild.iconURL)
+        .addField("User reported:", member + " (``" + member.id + "``)")
+        .addField("Reported by:", "<@" + message.author.id + "> (``" + message.author.id + "``)")
+        .addField("From the channel:", message.channel.name + " (``" + message.channel.id + "``)")
+        .addField("Reason:", reason)
+        .setThumbnail(message.guild.iconURL)
+        .setTimestamp()
+        let ReportChannel = message.guild.channels.find(c => c.name === "reports")
+        if(!ReportChannel) return message.channel.send(NoChannelFound)
+        ReportChannel.send(ReportInformation)
+        message.delete()
+        var Success = new Discord.RichEmbed()
+        .setColor("0x38ee0e")
+        .setTitle( emoji("689538521161138177") + message.author.displayName + ", your report has been sent to the staff team!")
+        .setTimestamp()
+        message.channel.send(Success)
+    }
+})
+
 // CMDS COMMAND
 
 client.on('message', message => {
